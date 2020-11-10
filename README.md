@@ -1,24 +1,25 @@
 # Lab 4: Zoning Maps with Pandas
 Due: 13th November 2020
 
+Data downloaded from [OpenData D.C.](https://opendata.dc.gov/) with most recent data
+
 [Carto PUD DC Map](https://jstrzempko.carto.com/builder/aeebcff3-c5e1-4267-87c0-c9e9afb29def/embed)
+
+![Jess Strzempko's CartoMap](images/PUD_DC_screenshot.png)
+
+### What you will submit:
+A link to your Github repo. The repo must contain your Python code (either as script in `.py` or a notebook in `.ipynb` format). The `README` of your repo should briefly summarize the project (in your own words), show an image of your final output, *and* link to your final map in Carto. You do not need to include the input/output files (as I have here) but it might be a good idea if you want to use this repo as part of your portfolio.
 
 # The Code
 The script is meant to be run using shapefiles provided for this class with file paths and names specific to the student submission. If questions arise, users can contact Jess Strzempko at JeStrzempko@clarku.edu for more help and further information.
 
+# Citation
+This tutorial was originally created by [Nicole Janeway Bills](https://twitter.com/nicole_janeway), who provides a nice [video walkthrough on YouTube here](https://www.youtube.com/watch?v=b9G2T4CPYVM&feature=emb_logo). The code has been changed slightly to deal with different inputs (Open Data D.C.'s file formatting has changed since the original tutorial); added more background context on the scenario, and added the use of Carto for a final output.
+
+
+
 # Creating Zoning Maps Using Python & Pandas
 By following this tutorial, you’ll learn to navigate geographic shapefiles in a Jupyter Notebook (we'll be using Colab). You will upload data from DC’s open data portal, and then concatenate datasets and conduct some basic analysis. Finally, you'll create a basic map, and create a new `.shp` file that can be used with ESRI products... or can be uploaded to a service like [Carto](https://www.carto.com/) to create the online map you see below! Check out a live version of [my final map here](https://shadrock.carto.com/builder/df4c5d9f-1c1e-4df4-bb15-42681ba14aac/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B38.838460360929645%2C-77.21660658717157%5D%2C%22sw%22%3A%5B39.03127554305828%2C-76.8502812087536%5D%2C%22center%22%3A%5B38.93493348047009%2C-77.03344389796258%5D%2C%22zoom%22%3A12%7D%7D).  
-![Shadrock's cool map](images/Carto_ouput.png)
-
-### To complete this assignment you will need:
-- A Google account. We'll be using Colab, but also space in your Google Drive: this will be nice example of hosting a small data science project with your own services.
-- Data downloaded from [OpenData D.C.](https://opendata.dc.gov/). If, for some reason you can't access the site or download the data, there is a [data folder in this repo](data) that contains archived data you could use. That being said, I want you to use the most recent data you can get!
-- A free student account on Carto. You can _only_ get one of these by authenticating with your [Github Student Developer pack](https://education.github.com/pack) (pretty nifty, eh?). [Go here for details and links](https://carto.com/help/getting-started/student-accounts/): the process shouldn't take long. Note that a normal, free, Github account will not work!
-
-Note that, in the tutorial below, I have included screenshots of what your output should look like. You will not always have the exact same output (especially because you're using the most recent data) but they should give you a sense of what your code should produce. In some cases, your code will simply produce a notifcation that something has run, or the result of a print statement: I have not included screenshots for these.
-
-### What you will submit:
-A link to your Github repo. The repo must contain your Python code (either as script in `.py` or a notebook in `.ipynb` format). The `README` of your repo should briefly summarize the project (in your own words), show an image of your final output, *and* link to your final map in Carto. You do not need to include the input/output files (as I have here) but it might be a good idea if you want to use this repo as part of your portfolio.
 
 ## Why is this lab important?
 The United States is facing a housing crisis. The cost of housing has skyrocketed and wages have not kept pace: housing instability threatens 11 million Americans. One, little understood, aspect of the housing crisis is evictions. The [Eviction Lab](https://evictionlab.org/) is studying this to try and understand the phenomenon, which is potentially even [more devestating during the current pandemic](https://www.forbes.com/sites/samchandan/2020/07/25/americas-next-housing-crisis-how-the-pandemic-is-pushing-renters-to-the-brink/#2a98d7bd1527), and which is [starkly impacted by race and income](https://www.urban.org/urban-wire/new-data-suggest-covid-19-widening-housing-disparities-race-and-income). The Eviction Lab built the *first* nationwide database of evictions only *recently*. This is amazing when you consider it: there was no data available! Remember this in any humanitarian program you are part of: if it isn't measured, it isn't managed. How can you manage something when you don't understand the scale or scope of the problem?!
@@ -179,6 +180,3 @@ Now that you have a `.shp` file, you could continue your analysis or map-making 
 - To symbolize your polygons by category, change the polygon style to show `zone_cat`.
 - Make sure you add/update a legend that helps viewers understand what the colors of your polygons mean.
 - Publish, Update, and share your maps! ([More details on this at Carto](https://carto.com/help/tutorials/publishing-and-sharing-maps/)). And don't forget to link your final `README` to your online map!
-
-# Citation
-This tutorial was originally created by [Nicole Janeway Bills](https://twitter.com/nicole_janeway), who provides a nice [video walkthrough on YouTube here](https://www.youtube.com/watch?v=b9G2T4CPYVM&feature=emb_logo). I've changed some of the code slightly to deal with different inputs (Open Data D.C.'s file formatting has changed since the original tutorial); added more background context on the scenario, and added the use of Carto for a final output.
