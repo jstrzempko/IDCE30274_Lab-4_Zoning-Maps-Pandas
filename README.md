@@ -1,7 +1,23 @@
 # Lab 4: Zoning Maps with Pandas
 Due: 13th November 2020
 
+This script and Carto map were created as part of Lab 4: Zoning Maps with Pandas for IDCE 30274: Computer Programming in GIS taught by Professor Shadrock Roberts at Clark University. 
+
+## Why is this lab important?
+**Summary provided by course professor**
+The United States is facing a housing crisis. The cost of housing has skyrocketed and wages have not kept pace: housing instability threatens 11 million Americans. One, little understood, aspect of the housing crisis is evictions. The [Eviction Lab](https://evictionlab.org/) is studying this to try and understand the phenomenon, which is potentially even [more devestating during the current pandemic](https://www.forbes.com/sites/samchandan/2020/07/25/americas-next-housing-crisis-how-the-pandemic-is-pushing-renters-to-the-brink/#2a98d7bd1527), and which is [starkly impacted by race and income](https://www.urban.org/urban-wire/new-data-suggest-covid-19-widening-housing-disparities-race-and-income). The Eviction Lab built the *first* nationwide database of evictions only *recently*. This is amazing when you consider it: there was no data available! Remember this in any humanitarian program you are part of: if it isn't measured, it isn't managed. How can you manage something when you don't understand the scale or scope of the problem?!
+
+One way to study eviction is to look at how cities handle [zoning](https://www.smgov.net/Departments/PCD/Zoning/What-is-Zoning/), the laws which govern how land can be used. Gentrification, the process of renovating and improving an area to attract wealthier residents, can cause displacement of current residents, but can also _potentially_ unlock economic opportunity. The city of Washington D.C., is using "Planned Unit Developments", in an attempt to broadly redistribute the benefits of urban redevelopment by offering amenities such as affordable housing, improved public transportation, and in exchange for zoning exemptions. However, this will need to be studied over the long-term to see if it works. For example, Planned Unit Developments, even those offering affordable housing as part of their community benefit package, could still contribute to higher eviction rates in anticipation of the appreciation of land values.
+
+This lab uses Python to gather open data about zoning in D.C. and creates a map of zoning exemptions. This would be the first step to overlaying these data with other demographic data. It will answer the question:
+_Can we categorize and visualize buildings that received a zoning exemption in Washington, DC?_
+
+
+## Data
 Data downloaded from [OpenData D.C.](https://opendata.dc.gov/) with most recent data
+[Open Data D.C.'s Planned Unit Developments](https://opendata.dc.gov/datasets/planned-unit-development-puds)
+[Affordable Housing page](https://opendata.dc.gov/datasets/affordable-housing), and download the **_spreadsheet_**
+`.csv` - concatenate files to add the spatial data you need the attribute data you need.
 
 [Carto PUD DC Map](https://jstrzempko.carto.com/builder/aeebcff3-c5e1-4267-87c0-c9e9afb29def/embed)
 
@@ -20,26 +36,6 @@ This tutorial was originally created by [Nicole Janeway Bills](https://twitter.c
 
 # Creating Zoning Maps Using Python & Pandas
 By following this tutorial, you’ll learn to navigate geographic shapefiles in a Jupyter Notebook (we'll be using Colab). You will upload data from DC’s open data portal, and then concatenate datasets and conduct some basic analysis. Finally, you'll create a basic map, and create a new `.shp` file that can be used with ESRI products... or can be uploaded to a service like [Carto](https://www.carto.com/) to create the online map you see below! Check out a live version of [my final map here](https://shadrock.carto.com/builder/df4c5d9f-1c1e-4df4-bb15-42681ba14aac/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B38.838460360929645%2C-77.21660658717157%5D%2C%22sw%22%3A%5B39.03127554305828%2C-76.8502812087536%5D%2C%22center%22%3A%5B38.93493348047009%2C-77.03344389796258%5D%2C%22zoom%22%3A12%7D%7D).  
-
-## Why is this lab important?
-The United States is facing a housing crisis. The cost of housing has skyrocketed and wages have not kept pace: housing instability threatens 11 million Americans. One, little understood, aspect of the housing crisis is evictions. The [Eviction Lab](https://evictionlab.org/) is studying this to try and understand the phenomenon, which is potentially even [more devestating during the current pandemic](https://www.forbes.com/sites/samchandan/2020/07/25/americas-next-housing-crisis-how-the-pandemic-is-pushing-renters-to-the-brink/#2a98d7bd1527), and which is [starkly impacted by race and income](https://www.urban.org/urban-wire/new-data-suggest-covid-19-widening-housing-disparities-race-and-income). The Eviction Lab built the *first* nationwide database of evictions only *recently*. This is amazing when you consider it: there was no data available! Remember this in any humanitarian program you are part of: if it isn't measured, it isn't managed. How can you manage something when you don't understand the scale or scope of the problem?!
-
-One way to study eviction is to look at how cities handle [zoning](https://www.smgov.net/Departments/PCD/Zoning/What-is-Zoning/), the laws which govern how land can be used. Gentrification, the process of renovating and improving an area to attract wealthier residents, can cause displacement of current residents, but can also _potentially_ unlock economic opportunity. The city of Washington D.C., is using "Planned Unit Developments", in an attempt to broadly redistribute the benefits of urban redevelopment by offering amenities such as affordable housing, improved public transportation, and in exchange for zoning exemptions. However, this will need to be studied over the long-term to see if it works. For example, Planned Unit Developments, even those offering affordable housing as part of their community benefit package, could still contribute to higher eviction rates in anticipation of the appreciation of land values.
-
-In this lab, we'll use Python to gather some open data about zoning in D.C. and create a map of zoning exemptions. This would be the first step to overlaying these data with other demographic data and will answer the question:
-_Can we categorize and visualize buildings that received a zoning exemption in Washington, DC?_
-
-## Data from Open Data DC!
-The data for this exercise comes from DC’s open data portal, specifically [their page on Planned Unit Developments](https://opendata.dc.gov/datasets/planned-unit-development-puds). Isn't it great that they are supplying open data? From the PUDs page, download the shapefile from the dropdown options. You'll need to unzip the folder and add all the different files that make up a `.shp` file to your Drive.
-> ![Downloading PUD data](images/PUDs_data_download.png)
-
-Now navigate to the portal's [Affordable Housing page](https://opendata.dc.gov/datasets/affordable-housing), and download the **_spreadsheet_** (_not the shapefile!_). For the purposes of this exercise, we'll walk through the process of taking a common data file like a `.csv` and giving it spatial attributes. Normally, you'd just download spatial data, but `.csv` is an incredibly widespread data format and it is **not uncommon** to have to concatenate files to add the spatial data you need the attribute data you need.
-> ![Downloading Aff Housing data](images/Aff_data_download.png)
-
-Once you have downloaded the data, you will need to upload it to your Google Drive. To facilitate easy access to data during the code-along, set up the following file structure:
-- From your My Drive folder create a folder called `gis`
-- Within that folder, create `input` and `output` folders
-- Within the input folder, upload the `Affordable_Housing.csv` as well as all the files from inside the Planned Unit Development folder, after unzipping it
 
 It’s important that you **use these exact naming conventions and organization system or that you make the required updates to the import/export statements during the code-along.**
 You will also need a crosswalk made for this activity. You can get that file in this repo (called `zoning_crosswalk.csv`) — then upload it to your `input` folder in Drive as well. A [crosswalk](https://en.wikipedia.org/wiki/Schema_crosswalk) is a table that shows equivalent elements (or "attributes") in more than one database schema. It maps the elements in one schema to the equivalent elements in another.
