@@ -7,7 +7,7 @@ This script and Carto map were created as part of Lab 4: Zoning Maps with Pandas
 
 [Carto PUD DC Map](https://jstrzempko.carto.com/builder/aeebcff3-c5e1-4267-87c0-c9e9afb29def/embed)
 
-[PUD DC Map Screenshot](PUD_DC_screenshot.png)
+![](PUD_DC_screenshot.PNG)
 
 ## Why is this issue important?
 **provided by course professor**
